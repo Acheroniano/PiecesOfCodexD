@@ -91,5 +91,33 @@ FROM
       INNER JOIN OrdersDishes ON Orders.OrderID = OrdersDishes.OrderID
       INNER JOIN Dishes On OrdersDishes.DishID = Dishes.DishID
       GROUP BY OrdersDishes.OrderID );
-```
 
+
+## Comando do Linux Xubuntu para
+## Criar Uma Pasta, com arquivos aleatórios
+## de conteúdo aleatório de tambho aleatório
+## até atingir 500gib
+
+
+
+```
+#!/bin/bash
+
+total_size=0
+max_size=$((500 * 1024 * 1024 * 1024))  # 500 GB em bytes
+output_dir="arquivos_random"
+mkdir -p "$output_dir"
+
+while [ $total_size -lt $max_size ]; do
+    file_name="$output_dir/$(uuidgen).txt"
+    file_size=$(( RANDOM * RANDOM ))  # Tamanho aleatório
+    file_size=$(( file_size % (10 * 1024 * 1024) ))  # Limitando a 10MB por arquivo
+
+    base64 /dev/urandom | head -c $file_size > "$file_name"
+    actual_size=$(stat -c%s "$file_name")
+    total_size=$(( total_size + actual_size ))
+
+    echo "Criado $file_name com $actual_size bytes. Total acumulado: $total_size bytes."
+done
+
+echo "Processo concluído! Total de 500GB alcançado."
