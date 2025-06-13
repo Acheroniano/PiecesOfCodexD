@@ -121,3 +121,8 @@ while [ $total_size -lt $max_size ]; do
 done
 
 echo "Processo concluído! Total de 500GB alcançado."
+
+
+data mundo
+https://www.notion.so/Cronograma-Mentoria-Data-Mundo-60-Dias-211d8156dd768062aceac52076cb412e
+
